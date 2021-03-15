@@ -2,229 +2,24 @@
 
 <html　lang = "en">
     <head>
-
         <meta charset="utf-8">
         <title>Kazuki and Akari's Diary</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <style type="text/css">
-            * {
-              border: 0;
-              box-sizing: border-box;
-              margin: auto;
-              padding: 0;
-            }
-            :root {
-              --bg: #e3e4e8;
-              --fg: #17181c;
-              --transDur: 0.1s;
-              font-size: calc(20px + (40 - 20)*(100vw - 320px)/(2560 - 320));
-            }
-            body, form {
-              display: flex;
-            }
-            body, input {
-              color: var(--fg);
-              font: 1em/1.5 Helvetica, sans-serif;
-            }
-            body {
-              background-color: var(--bg);
-              background-image: linear-gradient(90deg,#0000003f,transparent);
-              height: 100vh;
-            }
-            form, label {
-              width: 100%;
-            }
-            form {
-              margin: auto;
-              max-width: 24em;
-              padding: 0 1.5em;
-            }
-            label {
-              display: block;
-              text-align: center;
-              -webkit-tap-highlight-color: transparent;
-            }
-            label:first-child input {
-              border-radius: 0.5em 0 0 0.5em;
-              box-shadow:
-                0.1em 0 0 #2726267f inset,
-                -0.1em 0 0 #27262600 inset,
-                0 0.1em 0 #afa490 inset,
-                0 -0.1em 0 #ffffff3f,
-                0 0.2em 0.5em #0000007f,
-                0 -0.1em 0 #926086 inset,
-                -0.1em -0.2em 0 #ffffff7f inset,
-                0.2em 0 0 #ffffff7f inset;
-            }
-            label:last-child input {
-              border-radius: 0 0.5em 0.5em 0;
-              box-shadow:
-                0 -0.1em 0 #926086 inset,
-                0.1em 0 0 #2726267f inset,
-                -0.1em 0 0 #2726267f inset,
-                0 0.1em 0 #afa490 inset,
-                -0.1em 0 0 #afa490 inset,
-                0 -0.1em 0 #ffffff3f,
-                0 0.2em 0.5em #0000007f,
-                -0.1em -0.1em 0 0.1em #ffffff7f inset;
-            }
-            label:first-child input:checked {
-              box-shadow:
-                0.1em 0 0 #272626af inset,
-                -0.1em 0 0 #272626 inset,
-                0 0.1em 0 #847a62 inset,
-                0 -0.1em 0 #ffffff3f,
-                0 0.1em 0 #ffffff7f,
-                0 -0.1em 0 #722257 inset,
-                -0.1em -0.2em 0 #ffffff7f inset,
-                0.2em 0 0 #ffffff7f inset;
-            }
-            label:last-child input:checked {
-              box-shadow:
-                0.1em 0 0 #272626af inset,
-                -0.1em 0 0 #272626 inset,
-                0 -0.1em 0 #722257 inset,
-                0 0.1em 0 #847a62 inset,
-                -0.1em 0 0 #847a62 inset,
-                0 -0.1em 0 #ffffff3f,
-                0 0.1em 0 #ffffff7f,
-                -0.1em -0.1em 0 0.1em #ffffff7f inset;
-            }
-            input {
-              background-image: linear-gradient(#ffffff 33%,#414751 58%,#837b52,#c5baa1,#c3adaa);
-              border-radius: 0;
-              box-shadow:
-                0.1em 0 0 #2726267f inset,
-                -0.1em 0 0 #27262600 inset,
-                0 0.1em 0 #afa490 inset,
-                0 -0.1em 0 #ffffff3f,
-                0 0.2em 0.5em #0000007f,
-                0 -0.1em 0 #926086 inset,
-                -0.1em -0.2em 0 #ffffff7f inset;
-              cursor: pointer;
-              display: block;
-              margin-bottom: 0.5em;
-              width: 100%;
-              height: 1em;
-              transition: box-shadow var(--transDur) ease-in-out;
-              -webkit-appearance: none;
-              -moz-appearance: none;
-              appearance: none;
-            }
-            input:checked {
-              background-image: linear-gradient(#ffffff 33%,#414751 58%,#827a7b,#c0b6ac,#c3adaa);
-              box-shadow:
-                0.1em 0 0 #272626af inset,
-                -0.1em 0 0 #272626 inset,
-                0 0.1em 0 #847a62 inset,
-                0 -0.1em 0 #ffffff3f,
-                0 0.1em 0 #ffffff7f,
-                0 -0.1em 0 #722257 inset,
-                -0.1em -0.2em 0 #ffffff7f inset;
-            }
-            input:checked + span {
-              opacity: 1;
-            }
-            input:focus {
-              outline: transparent;
-            }
-            input + span {
-              opacity: 0.65;
-              transition: opacity var(--transDur) ease-in-out;
-            }
-
-            /* Dark mode */
-            @media (prefers-color-scheme: dark) {
-              :root {
-                --bg: #5c6270;
-                --fg: #e3e4e8;
-              }
-              label:first-child input {
-                box-shadow:
-                  0.1em 0 0 #2726267f inset,
-                  -0.1em 0 0 #27262600 inset,
-                  0 0.1em 0 #afa490 inset,
-                  0 -0.1em 0 #0000001f,
-                  0 0.2em 0.5em #0000007f,
-                  0 -0.1em 0 #926086 inset,
-                  -0.1em -0.2em 0 #ffffff7f inset,
-                  0.2em 0 0 #ffffff7f inset;
-              }
-              label:last-child input {
-                box-shadow:
-                  0 -0.1em 0 #926086 inset,
-                  0.1em 0 0 #2726267f inset,
-                  -0.1em 0 0 #2726267f inset,
-                  0 0.1em 0 #afa490 inset,
-                  -0.1em 0 0 #afa490 inset,
-                  0 -0.1em 0 #0000001f,
-                  0 0.2em 0.5em #0000007f,
-                  -0.1em -0.1em 0 0.1em #ffffff7f inset;
-              }
-              label:first-child input:checked {
-                box-shadow:
-                  0.1em 0 0 #272626af inset,
-                  -0.1em 0 0 #272626 inset,
-                  0 0.1em 0 #847a62 inset,
-                  0 -0.1em 0 #0000007f,
-                  0 0.1em 0 #0000007f,
-                  0 -0.1em 0 #722257 inset,
-                  -0.1em -0.2em 0 #ffffff7f inset,
-                  0.2em 0 0 #ffffff7f inset
-              }
-              label:last-child input:checked {
-                box-shadow:
-                  0.1em 0 0 #272626af inset,
-                  -0.1em 0 0 #272626 inset,
-                  0 -0.1em 0 #722257 inset,
-                  0 0.1em 0 #847a62 inset,
-                  -0.1em 0 0 #847a62 inset,
-                  0 -0.1em 0 #0000001f,
-                  0 0.1em 0 #0000007f,
-                  -0.1em -0.1em 0 0.1em #ffffff7f inset;
-              }
-              input {
-                box-shadow:
-                  0.1em 0 0 #2726267f inset,
-                  -0.1em 0 0 #27262600 inset,
-                  0 0.1em 0 #afa490 inset,
-                  0 -0.1em 0 #0000001f,
-                  0 0.2em 0.5em #0000007f,
-                  0 -0.1em 0 #926086 inset,
-                  -0.1em -0.2em 0 #ffffff7f inset;
-              }
-              input:checked {
-                box-shadow:
-                  0.1em 0 0 #272626af inset,
-                  -0.1em 0 0 #272626af inset,
-                  0 0.1em 0 #847a62 inset,
-                  0 -0.1em 0 #0000007f,
-                  0 0.1em 0 #0000007f,
-                  0 -0.1em 0 #722257 inset,
-                  -0.1em -0.2em 0 #ffffff7f inset;
-              }
-            }
-            #openHere{
-                display:none;
-            }
-            .text{
-                display: none;
-            }
-            .text01{
-                display: none;
-            }
-        </style>
+        <link rel="stylesheet" href="stylesheet/select_contents.css">
     </head>
     <body>
         <h1>Welcome To Our Diary</h1>
+        <!--コンテンツごとのラジオボタンcssのみ、cssに関してかずきくんは理解してない触らないほうが良さげ-->
         <form id="select_contens">
             <label><input type="radio" name="band" value="diary" id="diary"><span>日記</span></label>
             <label><input type="radio" name="band" value="plan" id="plan"><span>予定</span></label>
             <label><input type="radio" name="band" value="project" id="project"><span>計画</span></label>
             <label><input type="radio" name="band" value="picture" id="picture"><span>写真</span></label>
         </form>
+        <!--各コンテンツ。クラス名は変えたほうがいい。現状は01日記、02予定、03計画、04写真-->
         <div class="text text01">
             <textarea name="text" rows="8" cols="80">日記などのコンテンツをここに実装、カレンダー機能とかあったらいいね</textarea>
+
         </div>
         <div class="text text02">
             <textarea name="text" rows="8" cols="80">お互いのスケジュールを共有できたりしたら楽かな？</textarea>
@@ -235,6 +30,7 @@
         <div class="text text04">
             <textarea name="text" rows="8" cols="80">容量とかの問題で難しいかもだけど、写真とかも載せて行けたらいいかも</textarea>
         </div>
+        <!--以下各コンテンツのフェードアウト機能-->
         <script type="text/javascript">
             $(function() {
                 $('[name="band"]:radio').change( function() {

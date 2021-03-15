@@ -1,10 +1,13 @@
 <!doctype html>
+<!--コメント-->
 
 <html　lang = "en">
     <head>
+        <!--cssやjsを追加した場合、ここへの追加も忘れないようにしましょう-->
         <meta charset="utf-8">
         <title>Kazuki and Akari's Diary</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="js/contents.js" type="text/javascript"></script>
         <link rel="stylesheet" href="stylesheet/select_contents.css">
     </head>
     <body>
@@ -19,7 +22,6 @@
         <!--各コンテンツ。クラス名は変えたほうがいい。現状は01日記、02予定、03計画、04写真-->
         <div class="text text01">
             <textarea name="text" rows="8" cols="80">日記などのコンテンツをここに実装、カレンダー機能とかあったらいいね</textarea>
-
         </div>
         <div class="text text02">
             <textarea name="text" rows="8" cols="80">お互いのスケジュールを共有できたりしたら楽かな？</textarea>
@@ -30,25 +32,5 @@
         <div class="text text04">
             <textarea name="text" rows="8" cols="80">容量とかの問題で難しいかもだけど、写真とかも載せて行けたらいいかも</textarea>
         </div>
-        <!--以下各コンテンツのフェードアウト機能-->
-        <script type="text/javascript">
-            $(function() {
-                $('[name="band"]:radio').change( function() {
-                    if($('[id=diary]').prop('checked')){
-                        $('.text').fadeOut(1);
-                        $('.text01').fadeIn(1000);
-              　    }else if ($('[id=plan]').prop('checked')) {
-                        $('.text').fadeOut(1);
-                        $('.text02').fadeIn(1000);
-                    }else if ($('[id=project]').prop('checked')) {
-                        $('.text').fadeOut(1);
-                        $('.text03').fadeIn(1000);
-                    } else if ($('[id=picture]').prop('checked')) {
-                        $('.text').fadeOut(1);
-                        $('.text04').fadeIn(1000);
-                    }
-                });
-            });
-        </script>
     </body>
 </html>
